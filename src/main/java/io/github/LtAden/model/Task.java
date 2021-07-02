@@ -5,14 +5,14 @@
  */
 package io.github.LtAden.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 /**
  *
  * @author Aden
- * TODO
+ * TO-DO app
  */
 
 @Entity
@@ -21,7 +21,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotBlank(message = "its blank you idiot")
+    @NotBlank(message = "its blank, dummy")
     private String description;
     private boolean done;
     
