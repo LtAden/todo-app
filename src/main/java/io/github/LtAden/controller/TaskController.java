@@ -6,14 +6,15 @@
 package io.github.LtAden.controller;
 
 import io.github.LtAden.model.Task;
-import java.awt.print.Pageable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.github.LtAden.model.TaskRepository;
 import java.net.URI;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,15 +54,17 @@ public class TaskController {
     
     //Same as above, get methods will be directed here, when path is /tasks, and parameters parsed arent sort,page or size
     @GetMapping(value = "/tasks", params={"!sort","!page", "!size"})
-    ResponseEntity<?> readAllTasks(){
+    ResponseEntity<List<Task>> readAllTasks(){
         logger.warn("Exposing all the tasks");
         return ResponseEntity.ok(repository.findAll());
     }
         
+    
+    //if there is a parameter in the controller, of pageable type, it will be injected here. Pagination - heplful when we have large dataset, and we want to present it in smaller chunks
     @GetMapping("/tasks")
     ResponseEntity<?> readAllTasks(Pageable page){
-        logger.info("Custome Page");
-        return ResponseEntity.ok(repository.findAll());
+        logger.info("Custom Pageable");
+        return ResponseEntity.ok(repository.findAll(page).getContent());
     }
         
         

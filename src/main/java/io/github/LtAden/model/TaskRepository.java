@@ -7,6 +7,7 @@ package io.github.LtAden.model;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +16,7 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Aden
  */
+
 public interface TaskRepository {
     List<Task> findAll();
     

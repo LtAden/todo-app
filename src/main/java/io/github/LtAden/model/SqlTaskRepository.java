@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package io.github.LtAden.model;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Repository;
 //collectionResourceRel will change collection elements names
 @Repository //(path = "todos", collectionResourceRel = "todos")
 interface SqlTaskRepository extends TaskRepository, JpaRepository<Task, Integer>{
-    
     
     //these two block delete functions from being inherited, making deletes impossible
 //    @Override

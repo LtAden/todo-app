@@ -24,7 +24,7 @@ import javax.persistence.Id;
 @Table(name = "tasks")
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //types of ID number generation. Defaults to auto - sequence or table generation for numbers. Identity - relies on identity generator (?)
     private int id;
     @NotBlank(message = "its blank, dummy")
     private String description;
